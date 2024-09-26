@@ -25,7 +25,7 @@ export class AuthService implements IAuthService {
   }
 
   async login(dto: LoginUserDto): Promise<LoginResponseDto> {
-    const user = await this.userService.getUserEntityByLogin(dto.login);
+    const user = await this.userService.getUserEntityByLogin(dto.login, true);
 
     if (!user) throw new BadRequestException('Incorrect login or password');
 

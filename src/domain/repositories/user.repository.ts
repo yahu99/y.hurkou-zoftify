@@ -27,10 +27,11 @@ export class UserRepository
     });
   }
 
-  getByLogin(login: string): Promise<UserEntity> {
+  getByLogin(login: string, isActive?: boolean): Promise<UserEntity> {
     return this.findOne({
       where: {
         login,
+        isActive,
       },
     });
   }
@@ -42,6 +43,7 @@ export class UserRepository
   updateUser(entity: UserEntity): Promise<UserEntity> {
     return this.save(entity);
   }
+
   async deleteUser(userId: number): Promise<boolean> {
     const result = await this.update(
       {

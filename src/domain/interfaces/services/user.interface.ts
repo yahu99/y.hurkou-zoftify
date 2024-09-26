@@ -6,7 +6,7 @@ import { UpdateUserDto } from '../../../application/dtos/user/update-user.dto';
 export interface IUserService {
   getAll(): Promise<UserDto[]>;
   getById(userId: number): Promise<UserDto>;
-  getUserEntityByLogin(login: string): Promise<UserEntity>;
+  getUserEntityByLogin(login: string, isActive?: boolean): Promise<UserEntity>;
   createUser(dto: CreateUserDto): Promise<UserDto>;
   updateUser(dto: UpdateUserDto): Promise<UserDto>;
   deleteUser(userId: number): Promise<boolean>;

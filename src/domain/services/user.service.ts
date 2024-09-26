@@ -30,6 +30,7 @@ export class UserService implements IUserService {
 
     return userEntities.map((el) => UserDto.construct(el));
   }
+
   async getById(userId: number): Promise<UserDto> {
     const userEntity = await this.userRepository.getActualById(userId);
 
@@ -38,8 +39,8 @@ export class UserService implements IUserService {
     return UserDto.construct(userEntity);
   }
 
-  getUserEntityByLogin(login: string): Promise<UserEntity> {
-    return this.userRepository.getByLogin(login);
+  getUserEntityByLogin(login: string, isActive?: boolean): Promise<UserEntity> {
+    return this.userRepository.getByLogin(login, isActive);
   }
 
   async createUser(dto: CreateUserDto): Promise<UserDto> {
